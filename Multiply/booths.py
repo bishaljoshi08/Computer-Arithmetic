@@ -75,6 +75,7 @@ if __name__ == '__main__':
             if len(AC) > len(y):
                 AC = AC[1:]
             T.add_row( ['01','Add BR', BR, '', '', ''])
+            T.add_row(['','',len(BR)*'-', '', '','' ])
             T.add_row( ['','', AC, '', '', ''])
             AC, QR, Qn1 = ashrACQR(AC,QR,Qn1)
             SC -= 1
@@ -88,6 +89,7 @@ if __name__ == '__main__':
             while len(AC) < len(y):
                 AC = '0'+AC
             T.add_row( ['10','Subtract BR', compPlusOne(BR), '', '', ''])
+            T.add_row(['','',len(BR)*'-', '', '','' ])
             T.add_row([ '','', AC, '', '', ''])
             AC, QR, Qn1 = ashrACQR(AC,QR,Qn1)
             SC -= 1
