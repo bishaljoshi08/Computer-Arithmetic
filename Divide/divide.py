@@ -95,11 +95,19 @@ if __name__ == '__main__':
     Qs = As^Bs
 
     SC =len(B)
+    Bcomp = compPlusOne(B)
+    print("As = {}".format(As))
+    print("AQ = {} [double the length of B]".format(AQ))
+    print("Bs = {}".format(Bs))
+    print("B = {}".format(B))
+    print("B'+1 = {}".format(Bcomp))
+    print("Sign of Quotient = As ⊕ Bs = {} ⊕ {} = {}".format(As, Bs, Qs))
+    print("Sign of Remainder = As = {} ".format(As))
+    print("SC = {} [length of Q]".format(SC))
     # print('AQ is {}'.format(AQ))
     # print('B is {}'.format(B))
 
     
-    Bcomp = compPlusOne(B)
     A = AQ [:len(B)]
     Q = AQ[-len(B):]
     # print('this is A{}'.format(A))
@@ -111,7 +119,7 @@ if __name__ == '__main__':
     T.add_row( ['Initial condition', E, A, Q, SC])
     while(SC != 0 ):
         E,A,Q = shlEAQ(E,A,Q)
-        T.add_row( ['shl EAQ', E, A, Q, SC])
+        T.add_row( ['shl EAQ', E, A, Q, ''])
         if E == '0':
             sum = bin(int(A,2) + int(Bcomp,2))
             EA = sum[2:]
@@ -125,7 +133,8 @@ if __name__ == '__main__':
                 E ='1'
                 A = EA[1:]
             T.add_row( ['E = 0, Sub B', '', Bcomp, '', ''])
-            T.add_row( ['', E, A, Q, SC])
+            T.add_row(['','',len(B)*'-', '', '' ])
+            T.add_row( ['', E, A, '', ''])
             if E == '0':
                 sum = bin(int(A,2) + int(B,2))
                 EA = sum[2:]
@@ -136,14 +145,15 @@ if __name__ == '__main__':
                     E ='1'
                     A = EA[1:]
                 SC -= 1
-                T.add_row( ['E = 0, Restore A', '', B, '', ''])
-                T.add_row( ['', E, A, Q, SC])
+                T.add_row( ['E = 0, Restore A', '', B, '', SC])
+                T.add_row(['','',len(B)*'-', '', '' ])
+                T.add_row( ['', E, A, '', ''])
             else:
                 lst = list(Q)
                 lst[len(Q)-1] = '1'
                 Q = ''.join(lst)
                 SC -= 1
-                T.add_row( ['E = 1 ,SetQn', E, A, Q, SC])
+                T.add_row( ['E = 1 ,SetQn', '', A, Q, SC])
         else:
             sum = bin(int(A,2) + int(Bcomp,2))
             EA = sum[2:]
@@ -164,7 +174,8 @@ if __name__ == '__main__':
             Q = ''.join(lst)
             SC -= 1
             T.add_row( ['E = 1, Sub B and set Qn', '', Bcomp, '', ''])
+            T.add_row(['','',len(B)*'-', '', '' ])
             T.add_row( ['', E, A, Q, SC])
 
 print (T)
-print("The sign of Quotient is {} and that of remainder is {}".format(Qs, As))
+# print("The sign of Quotient is {} and that of remainder is {}".format(Qs, As))

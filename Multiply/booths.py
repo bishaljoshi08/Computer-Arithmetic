@@ -58,6 +58,11 @@ if __name__ == '__main__':
     AC = '0'*len(BR)
     Qn1 = '0'
     SC = len(QR)
+    print("BR = {}".format(BR))
+    print("QR = {}".format(QR))
+    print("Qn+1 = {}".format(Qn1))
+    print("AC = {} [length equal to BR]".format(AC))
+    print("SC = {} [length of QR]".format(SC))
 
     T.field_names = ['Qn Qn+1'," BR = {}, BR'+1 = {}".format(BR, compPlusOne(BR)), 'AC', 'QR', 'Qn+1', 'SC']
     T.add_row( ['','Initial condition', AC, QR, Qn1, SC])
@@ -70,7 +75,7 @@ if __name__ == '__main__':
             if len(AC) > len(y):
                 AC = AC[1:]
             T.add_row( ['01','Add BR', BR, '', '', ''])
-            T.add_row( ['','', AC, QR, Qn1, SC])
+            T.add_row( ['','', AC, '', '', ''])
             AC, QR, Qn1 = ashrACQR(AC,QR,Qn1)
             SC -= 1
             T.add_row( ['','ashr AC & QR', AC, QR, Qn1, SC])
@@ -83,7 +88,7 @@ if __name__ == '__main__':
             while len(AC) < len(y):
                 AC = '0'+AC
             T.add_row( ['10','Subtract BR', compPlusOne(BR), '', '', ''])
-            T.add_row([ '','', AC, QR, Qn1, SC])
+            T.add_row([ '','', AC, '', '', ''])
             AC, QR, Qn1 = ashrACQR(AC,QR,Qn1)
             SC -= 1
             T.add_row( ['','ashr AC & QR', AC, QR, Qn1, SC])
