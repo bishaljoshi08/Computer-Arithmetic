@@ -36,10 +36,20 @@ if __name__ == '__main__':
     Q = int(input("Enter the value of Q: "))
     Bs, B = remove_sign_and_convert_binary(B)
     Qs, Q = remove_sign_and_convert_binary(Q)
+    As = Qs ^ Bs
     E = '0'
     A = '0'*len(B)
     
     SC = len(Q)
+    print("Bs = {}".format(Bs))
+    print("B = {}".format(B))
+    print("Qs = {}".format(Qs))
+    print("Q = {}".format(Q))
+    print("Sign of product (As) = Qs ⊕ Bs = {}".format(As))
+    print("Qs = Qs ⊕ Bs = {}".format(As))
+    print("A = {} [length equal to B]".format(A))
+    print("SC = {}[length of Q]".format(SC))
+    
 
     T.field_names = ['Multiplicant B = {}'.format(B), 'E', 'A', 'Q', 'SC']
 
@@ -57,8 +67,9 @@ if __name__ == '__main__':
 
             A = EA[-len(A):]
             T.add_row( ['Qn =1 add B', '', B, '',''])
+            T.add_row(['','',len(A)*'-','',''] )
 
-            T.add_row( ['', E, A, Q,SC])
+            T.add_row( ['', E, A, '',''])
             E,A,Q = shrEAQ(E,A,Q)
             SC -= 1
             T.add_row( ['SHR EAQ', E, A, Q,SC])
@@ -68,7 +79,7 @@ if __name__ == '__main__':
             T.add_row( ['Qn = 0,SHR EAQ', E, A, Q,SC])
 
 print(T)
-if (Bs^Qs == 1):
-    print("The sign is negative")
-else:
-    print("The sign is positive")
+# if (Bs^Qs == 1):
+#     print("The sign is negative")
+# else:
+#     print("The sign is positive")

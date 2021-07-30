@@ -17,7 +17,3 @@
 -
 
 - Signed magnitude
-
-	
-
-	- You have to check for overflow on your own.
